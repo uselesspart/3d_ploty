@@ -27,17 +27,17 @@ def main():
         fig.add_trace(go.Scatter3d(
             x = i['lat[deg]'],
             y = i['long[deg]'],
-            z = i['speed[kmph]'], 
+            z = i['path_meter_pos[m]'], 
             line=dict(color=str('#%06x' % (color))),
-            marker=dict(size=5)
+            marker=dict(size=1)
         ))
-        # fig.add_trace(go.Line(
-        #     x = i['long[deg]'],
-        #     y = i['lat[deg]'],
-        #     #z = zs, 
-        #     # line=dict(color=str('#%06x' % (color))),
-        #     # marker=dict(size=1)
-        # ))
+        fig.add_trace(go.Scatter3d(
+            x = i['path_meter_pos[m]'],
+            y = i['speed[kmph]'],
+            z = zs, 
+            line=dict(color=str('#%06x' % (color))),
+            marker=dict(size=1)
+        ))
 
     fig.show()
     
