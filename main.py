@@ -1,22 +1,44 @@
 import plotly.graph_objects as go
 import pandas as pd
+import os
+import glob
+import numpy as np
+import sys
 
 def main():
-    pd.options.plotting.backend = "plotly"
-    df1 = pd.read_csv('line1.csv')
-    df2 = pd.read_csv('line2.csv')
-    df3 = pd.read_csv('line3.csv')
-    dfs = {'df1' : df1, 'df2' : df2, 'df3' : df3}
+
+    path = os.getcwd()
+    csv_files = glob.glob(os.path.join(path, "*.tsv"))
+    dfs = []
+
+    for f  in csv_files:
+        df = pd.read_csv(f, sep='\t')
+        dfs.append(df)
 
     fig = go.Figure()
+    color = 0
 
     for i in dfs:
-        fig.add_trace(go.Scatter3d(
-            x = dfs[i]['x'],
-            y = dfs[i]['y'],
-            z = dfs[i]['z']
-        ))
+
+        size = i.size
+        zs = np.zeros(size)
+        color = np.random.randint(int(0xFFFFFF))
     
+        fig.add_trace(go.Scatter3d(
+            x = i['lat[deg]'],
+            y = i['long[deg]'],
+            z = i['path_meter_pos[m]'], 
+            line=dict(color=str('#%06x' % (color))),
+            marker=dict(size=1)
+        ))
+        fig.add_trace(go.Scatter3d(
+            x = i['path_meter_pos[m]'],
+            y = i['speed[kmph]'],
+            z = zs, 
+            line=dict(color=str('#%06x' % (color))),
+            marker=dict(size=1)
+        ))
+
     fig.show()
     
 if __name__ == "__main__":
