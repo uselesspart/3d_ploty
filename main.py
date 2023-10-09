@@ -18,6 +18,7 @@ if __name__ == "__main__":
     color = 125
     for name in dfs.keys():
         data = dfs[name]
+        zs = np.zeros(data.size)
         fig.add_trace(go.Scatter3d(
             x = data['lat[deg]'],
             y = data['long[deg]'],
@@ -25,4 +26,14 @@ if __name__ == "__main__":
             line=dict(color=str('#%06x' % (color))),
             marker=dict(size=1)
         ))
+        fig.add_trace(go.Scatter3d(
+            x = data['lat[deg]'],
+            y = data['long[deg]'],
+            z = zs, 
+            line=dict(color=str('#%06x' % (color))),
+            marker=dict(size=1)
+        ))
+    
+    fig.update_scenes(aspectratio=dict(x=2, y=2, z=1))
+    
     fig.show()
