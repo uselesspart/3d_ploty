@@ -1,0 +1,4 @@
+start	stop	start_e	start_n	stop_e	stop_n	idx	lim
+string	string	double	double	double	double	string	string
+0.00	148.35	30.498816	59.834855	30.499109	59.833860		15.0
+152.87	163.67	30.499125	59.833820	30.499125	59.833820	SW.877367	15.0
