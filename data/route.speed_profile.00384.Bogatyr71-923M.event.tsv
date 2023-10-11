@@ -1,4 +1,0 @@
-start	stop	start_e	start_n	stop_e	stop_n	idx	lim
-string	string	double	double	double	double	string	string
-0.00	6.28	30.499341	59.833321	30.499432	59.833288		15.0
-10.81	21.60	30.499498	59.833264	30.499498	59.833264	SW.877363	15.0
