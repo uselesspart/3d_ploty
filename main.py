@@ -33,5 +33,5 @@ if __name__ == "__main__":
             line=dict(color="rgb(128, 64, 48)"),
             marker=dict(size=1)
         ))  
-    fig.update_scenes(aspectratio=dict(x=2, y=2, z=1))
+    fig.update_scenes(aspectratio=dict(x=2, y=2, z=1), xaxis_showgrid=True, xaxis_gridwidth=0.01, yaxis_showgrid=True, yaxis_gridwidth=0.01)
     fig.show()
